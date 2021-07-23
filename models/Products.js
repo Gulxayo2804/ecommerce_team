@@ -42,13 +42,12 @@ const productSchema = new  mongoose.Schema({
     {
         type: Date, required:true
     },
-    images: [
-        {
-          url: {
-            type: String,
-            required: true,
-          },
-        },
-      ]
+    images: 
+        [
+            {
+                url: { type: String, required: true, },
+            }
+       ]
 })
+module.exports = mongoose.model('productSchema', productSchema );
 
