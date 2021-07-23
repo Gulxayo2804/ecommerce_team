@@ -12,6 +12,9 @@ products:[
 userID,
 address,
 phone,
-totalSum:
+totalSum,
+status{
+    enum:['active', 'noactive']
+}
 
 */
