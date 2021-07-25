@@ -31,9 +31,10 @@ const productSchema = new  mongoose.Schema({
             type : String , required: true
         }] ,
     description : 
-        { 
-            type : String , required: true 
-        } ,
+        {
+            uz: { type : String , required: true } ,
+            ru: { type : String , required: true } ,
+        },
     best_seller : 
         { 
             type : Number , default: 0, required: true 
