@@ -7,20 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gulxayo2804/ecommerce_team.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gulxayo2804/ecommerce_team/issues"
+  },
+  "homepage": "https://github.com/Gulxayo2804/ecommerce_team#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "express": "^4.17.1",
-    "fs": "0.0.1-security",
-    "mongoose": "^5.13.3",
-    "nodemon": "^2.0.12",
-    "path": "^0.12.7"
-=======
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.13.3",
-    "nodemon": "^2.0.12"
->>>>>>> 2d8a859f66303e466c1a55e9eccaaca86d7bf13e
+    "express": "^4.17.1"
   }
 }
