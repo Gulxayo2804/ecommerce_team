@@ -1,14 +1,11 @@
 /*
-products:[
-    {
+
+    
         productID,
         totalNubmer,
         price,
         color
-    }
-
-]
-
+         size
 userID,
 address,
 phone,
