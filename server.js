@@ -27,6 +27,7 @@ app.use(
         }
     })
 )
+app.use(express.static('public'))
 app.use(express.static(path.join(__dirname + "public")))
 app.use(bodyParser.json())
 app.locals.moment = require("moment");
@@ -41,7 +42,11 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 app.use(layout);
 
-app.use('/', require('./routes/authRouter'))
+
+app.use('/admin', require('./routes/admin/index'))
+
+app.use('/api/user', require('./routes/userRouter'));
+app.use('/api/auth', require('./routes/authRouter'));
 
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')

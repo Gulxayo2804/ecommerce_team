@@ -1,6 +1,5 @@
 const User = require('../models/User')
 const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcrypt')
 
 exports.register= async (req,res,next)=>{
     try {
