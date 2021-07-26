@@ -2,11 +2,11 @@ const User = require('../models/User')
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt')
 
-exports.super_admin = async (req,res,next)=>{
+exports.register= async (req,res,next)=>{
     try {
-        const {fullName,email,password,uuid,role} = req.body
+        const {fullName,email,password,phone,uuid,role} = req.body
         const uid = uuidv4()
-    const user = new User({fullName,email,password,uuid:uid,role})
+    const user = new User({fullName,email,password,phone,address,uuid:uid,role})
     await user.save()
     req.session.admin = user;
     req.session.isAuth = true;
@@ -44,7 +44,7 @@ exports.login = async (req,res,next)=>{
 exports.logout = async (req,res,next)=>{
     req.session.destroy();
     res.clearCookie("connectid.sid");
-    res.redirect('/admin/login')
+    res.redirect('/user/login')
 }
 
 exports.getOne = async (req, res, next) => {
@@ -53,10 +53,15 @@ exports.getOne = async (req, res, next) => {
   res.status(200).json({result,user})
 }
 
+exports.deleteUser = async (req, res, next) => {
+    await User.findByIdAndDelete({ _id: req.params.id });
+    res.status(200).json({ success: true, data: [] });
+  };
+
 exports.updateOne = async (req,res,next)=>{
     try {
-        const {fullName,email,password,role} = req.body;
-        await User.findById({_id:req.params.id}, {fullName,email,password,role})
+        const {fullName,email,password,phone,addressrole} = req.body;
+        await User.findById({_id:req.params.id}, {fullName,email,password,phone,addressrole})
         .save()
         .then(user=>{
             req.session.admin = user;
