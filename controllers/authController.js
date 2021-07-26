@@ -55,8 +55,8 @@ exports.getOne = async (req, res, next) => {
 
 exports.updateOne = async (req,res,next)=>{
     try {
-        const {fullName,email,uuid,password,role} = req.body;
-        await User.findById({_id:req.params.id}, {fullName,email,password,uuid,role})
+        const {fullName,email,password,role} = req.body;
+        await User.findById({_id:req.params.id}, {fullName,email,password,role})
         .save()
         .then(user=>{
             req.session.admin = user;

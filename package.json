@@ -17,7 +17,26 @@
     "url": "https://github.com/Gulxayo2804/ecommerce_team/issues"
   },
   "homepage": "https://github.com/Gulxayo2804/ecommerce_team#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "dependencies":{
+
+    "bcrypt": "^5.0.1",
+    "connect-mongodb-session": "^3.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "md5": "^2.3.0",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "multer": "^1.4.2",
+    "sharp": "^0.28.3",
+    "uuid": "^8.3.2",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.13.3",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7",
+    "body-parser": "^1.19.0"}
+
 }
