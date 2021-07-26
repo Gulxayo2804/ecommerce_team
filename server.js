@@ -28,7 +28,8 @@ app.use(
     })
 )
 app.use(express.static('public'))
-app.use(express.static(path.join(__dirname + "public")))
+app.use(express.static(path.join(__dirname + "public/admin")))
+app.use(express.static(path.join(__dirname + "/public/client")))
 app.use(bodyParser.json())
 app.locals.moment = require("moment");
 app.use(bodyParser.urlencoded({extended:false}))
@@ -42,6 +43,9 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 app.use(layout);
 
+app.get('/', (req,res)=>{
+    res.render('client/index',{layout:'./client_layout'})
+})
 
 app.use('/admin', require('./routes/admin/index'))
 
@@ -51,3 +55,4 @@ app.use('/api/auth', require('./routes/authRouter'));
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
 })
+
