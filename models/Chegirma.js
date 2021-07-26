@@ -8,11 +8,10 @@ const chegirmaSchema = mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref:'Product',
         required:true
-    },
-    date:{
-        type:Date,
-        default:Date.now()
     }
+},{
+    timestamps:true
 })
+
 
 module.exports = mongoose.model('Chegirma',chegirmaSchema);
