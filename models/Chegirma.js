@@ -1,5 +1,17 @@
+const mongoose = require('mongoose');
+const chegirmaSchema = mongoose.Schema({
+    amount:{
+        type:String,
+        required:true
+    },
+    productID:{
+        type: mongoose.Schema.ObjectId,
+        ref:'Product',
+        required:true
+    }
+},{
+    timestamps:true
+})
 
-/*
-productID,
-amount
-*/
+
+module.exports = mongoose.model('Chegirma',chegirmaSchema);
