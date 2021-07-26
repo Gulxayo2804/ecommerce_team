@@ -15,7 +15,7 @@ exports.createCategory = async(req,res,next)=>{
 }
 exports.categoryUpdate=async (req,res,next)=>{
     const category=await Category.findByIdAndUpdate({_id:req.params.id})
-        category.name=req.body.name
+        Category.name=req.body.name
     await category.save()
         .then(()=>{
             res.status(200).redirect(`/category/all`)
