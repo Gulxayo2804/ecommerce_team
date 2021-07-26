@@ -1,16 +1,3 @@
-/*
-name,
-CategoryID,
-price,
-color->[{
-
-}],
-description,
-best_seller ->number -> default >0
-delverTime->
-image[]
-*/
-
 const mongoose = require ('mongoose')
 const productSchema = new  mongoose.Schema({
     name : 
@@ -37,11 +24,11 @@ const productSchema = new  mongoose.Schema({
         },
     best_seller : 
         { 
-            type : Number , default: 0, required: true 
+            type : Number , default: 0
         } ,
     delverTime :
     {
-        type: Date, required:true
+        type: String, required:true
     },
     images: 
         [

@@ -10,17 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mongoose": "^5.13.3",
     "nodemon": "^2.0.12",
-    "path": "^0.12.7"
-=======
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.13.3",
-    "nodemon": "^2.0.12"
->>>>>>> 2d8a859f66303e466c1a55e9eccaaca86d7bf13e
+    "path": "^0.12.7",
+    "body-parser": "^1.19.0"
   }
 }
