@@ -1,8 +1,4 @@
-/*
-productID,
-userID,
-message
-*/
+
 const mongoose = require('mongoose');
 const commitSchema = mongoose.Schema({
     

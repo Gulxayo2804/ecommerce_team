@@ -46,6 +46,34 @@ app.use(layout);
 app.get('/', (req,res)=>{
     res.render('client/index',{layout:'./client_layout'})
 })
+app.get('/call', (req,res)=>{
+    res.render('client/blurb-call-to-action',{layout:'./client_layout'})
+})
+app.get('/404', (req,res)=>{
+    res.render('client/404',{layout:'./client_layout'})
+})
+app.get('/product', (req,res)=>{
+    res.render('client/compare-products-single',{layout:'./client_layout'})
+})
+app.get('/conditions', (req,res)=>{
+    res.render('client/conditions',{layout:'./client_layout'})
+})
+app.get('/coupon', (req,res)=>{
+    res.render('client/coupon',{layout:'./client_layout'})
+})
+app.get('/detail', (req,res)=>{
+    res.render('client/product-details',{layout:'./client_layout'})
+})
+app.get('/category', (req,res)=>{
+    res.render('client/category',{layout:'./client_layout'})
+})
+
+app.get('/wishlist', (req,res)=>{
+    res.render('client/wishlist',{layout:'./client_layout'})
+})
+app.get('/contact', (req,res)=>{
+    res.render('client/contact-us',{layout:'./client_layout'})
+})
 
 app.use('/admin', require('./routes/admin/index'))
 
@@ -55,4 +83,3 @@ app.use('/api/auth', require('./routes/authRouter'));
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
 })
-
