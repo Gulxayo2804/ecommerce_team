@@ -2,12 +2,15 @@ const Category = require('../models/Category');
 
 exports.createCategory = async(req,res,next)=>{
     const category = new Category({
-        uz:{name:req.body.name},
-        ru:{name:req.body.name}
+       name:{
+           uz:req.body.nameuz,
+           ru:req.body.nameru
+       }
     })
     await category.save()
     .then(()=>{
-        res.redirect('/admin')
+        res.redirect('/category/all')
+                  
     })
     .catch((error)=>{
         res.status(500).redirect('/category/add')
@@ -15,7 +18,8 @@ exports.createCategory = async(req,res,next)=>{
 }
 exports.categoryUpdate=async (req,res,next)=>{
     const category=await Category.findByIdAndUpdate({_id:req.params.id})
-        Category.name=req.body.name
+        category.name.uz=req.body.nameuz,
+        category.name.ru=req.body.nameru
     await category.save()
         .then(()=>{
             res.status(200).redirect(`/category/all`)
@@ -36,5 +40,12 @@ exports.getElementById= async (req,res,next)=>{
     res.status(200).render('edit-category',{
         data:category,
         layout:'./layout'
+    })
+}
+exports.getAll= async (req,res,next)=>{
+    const category= await Category.find()
+    res.render('admin/category/index',{
+        data:category,
+        layout:'./admin_layout.ejs'
     })
 }

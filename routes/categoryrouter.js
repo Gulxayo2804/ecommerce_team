@@ -1,5 +1,5 @@
 const router=require(`express`).Router()
-const {createCategory,categoryUpdate,categoryDelete,getElementById}=require(`../controllers/categoryController`)
+const {createCategory,categoryUpdate,categoryDelete,getAll}=require(`../controllers/categoryController`)
 
 
 
@@ -8,7 +8,7 @@ router.get('/add', (req,res)=>{
         layout:'./layout'
     })
 })
-router.get('/all/:id', getElementById)
+router.get('/all', getAll)
 router.post('/add',createCategory);
 
 router.patch('/edit/:id',categoryUpdate)
