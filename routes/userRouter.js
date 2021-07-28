@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {register, login,getOne,deleteUser, updateOne, logout} = require('../controllers/userController')
 
-router.post('/create', register)
+router.post('/register', register)
 router.post('/login', login)
 router.get('/logout', logout)
 router.get('/getme', getOne)

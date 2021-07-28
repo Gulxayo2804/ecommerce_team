@@ -43,7 +43,7 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="preloader"></div>
+    <!-- <div class="preloader"></div> -->
 
 
     <!-- =========================
@@ -243,14 +243,14 @@
 																				<a href="#" class="google-bg"><i class="fa fa-google-plus" aria-hidden="true"></i> Login</a>
 																			</div>
 																			<div class="login-form text-left">
-																				<form>
+																				<form method="POST" action="/api/user/login">
 																					<div class="form-group">
-																						<label for="exampleInputEmail-login">User name</label>
-																						<input type="text" class="form-control" id="exampleInputEmail-login" placeholder="John mist |">
+																						<label for="exampleInputEmail-login">Email</label>
+																						<input type="text" class="form-control" id="exampleInputEmail-login" name="email" placeholder="Your email">
 																					</div>
 																					<div class="form-group">
 																						<label for="exampleInputPassword-login-pass-2">Password</label>
-																						<input type="password" class="form-control" id="exampleInputPassword-login-pass-2" placeholder="*** *** ***">
+																						<input type="password" class="form-control" id="exampleInputPassword-login-pass-2" name="password" placeholder="*** *** ***">
 																					</div>
 																					<button type="submit" class="btn btn-primary wd-login-btn">LOGIN</button>
 
@@ -263,8 +263,7 @@
 																					
 																					<div class="wd-policy">
 																						<p>
-																							By Continuing. I conferm that i have read and userstand the <a href="#">terms of uses</a> and <a href="#">Privacy Policy</a>. 
-																							Don’t have an account? <a href="#" class="black-color"><strong><u>Sign up</u></strong></a>
+																							By Continuing. I conferm that i have read and userstand the <a href="/conditions">terms of uses</a> and <a href="/conditions">Privacy Policy</a>. 
 																						</p>
 																					</div>
 																				</form>
@@ -314,29 +313,28 @@
 																	<div class="col-md-6 p0">
 																		<div class="sign-up-section text-center">
 																			<div class="login-form text-left">
-																				<form>
+																				<form method="POST" action="/api/user/register">
 																					<div class="form-group">
-																						<label for="exampleInputname1">First name</label>
-																						<input type="text" class="form-control" id="exampleInputname1" placeholder="First Name">
+																						<label for="exampleInputname1">Fullname</label>
+																						<input type="text" class="form-control" id="exampleInputname1" name="name" placeholder="Fullname">
 																					</div>
 																					<div class="form-group">
-																						<label for="exampleInputname2">Last name</label>
-																						<input type="text" class="form-control" id="exampleInputname2" placeholder="Last Name">
+																						<label for="exampleInputname2">Telephone</label>
+																						<input type="text" class="form-control" id="exampleInputname2" name="phone" placeholder="Telephone">
 																					</div>
 																					<div class="form-group">
 																						<label for="exampleInputEmail-sign-up">Email</label>
-																						<input type="text" class="form-control" id="exampleInputEmail-sign-up" placeholder="Enter you email ...">
+																						<input type="text" class="form-control" id="exampleInputEmail-sign-up" name="email" placeholder="Enter you email ...">
 																					</div>
 																					<div class="form-group">
 																						<label for="exampleInputPassword-login-pass">Password</label>
-																						<input type="password" class="form-control" id="exampleInputPassword-login-pass" placeholder="*** *** ***">
+																						<input type="password" class="form-control" id="exampleInputPassword-login-pass" name="password" placeholder="*** *** ***">
 																					</div>
 																					<button type="submit" class="btn btn-primary wd-login-btn">Sign Up</button>
 																					
 																					<div class="wd-policy">
 																						<p>
-																							By Continuing. I conferm that i have read and userstand the <a href="#">terms of uses</a> and <a href="#">Privacy Policy</a>. 
-																							Don’t have an account? <a href="#" class="black-color"><strong><u>Sign up</u></strong></a>
+																							By Continuing. I conferm that i have read and userstand the <a href="/conditions">terms of uses</a> and <a href="/conditions">Privacy Policy</a>. 
 																						</p>
 																					</div>
 																				</form>
