@@ -7,7 +7,7 @@ exports.register= async (req,res,next)=>{
         const uuid = uuidv4()
     const user = new User({name,email,password,phone,uid:uuid})
     await user.save()
-    req.session.admin = user;
+    req.session.user = user;
     req.session.isAuth = true;
     req.session.save();
         res.status(201).redirect('/');
@@ -34,7 +34,7 @@ exports.login = async (req,res,next)=>{
                   if (!isMatch) {
                     res.status(404).json({msg:"Password xato"})
                   }else{
-                      req.session.admin = user;
+                      req.session.user = user;
                       req.session.isAuth = true;
                       req.session.save()
                       res.status(200).redirect('/')
@@ -45,7 +45,10 @@ exports.login = async (req,res,next)=>{
         return res.status(500).json({msg:error.message})
 }
 }
-
+ exports.getAll = async (req,res,next)=>{
+     const all = await User.find()
+     res.send(all)
+ }
 exports.logout = async (req,res,next)=>{
     req.session.destroy();
     res.clearCookie("connectid.sid");
