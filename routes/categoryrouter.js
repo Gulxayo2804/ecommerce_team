@@ -1,6 +1,6 @@
 const router=require(`express`).Router()
 const {createCategory,categoryUpdate,categoryDelete,getElementById}=require(`../controllers/categoryController`)
-const router = require('express').Router();
+
 
 
 router.get('/add', (req,res)=>{

@@ -51,6 +51,10 @@ app.use('/admin', require('./routes/admin/index'))
 
 app.use('/api/user', require('./routes/userRouter'));
 app.use('/api/auth', require('./routes/authRouter'));
+app.use(`/category`,require(`./routes/categoryrouter`));
+app.use(`/slider`,require(`./routes/sliderRouter`));
+app.use(`/basket`,require(`./routes/basketRouter`));
+app.use(`/commit`,require(`./routes/commitRouter`))
 
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
