@@ -37,9 +37,9 @@ exports.categoryDelete=async(req,res,next)=>{
 
 exports.getElementById= async (req,res,next)=>{
     const category= await Category.findById({_id:req.params.id})
-    res.status(200).render('edit-category',{
-        data:category,
-        layout:'./layout'
+    res.status(200).render('admin/category/update',{
+        category,
+        layout:'./admin_layout'
     })
 }
 exports.getAll= async (req,res,next)=>{

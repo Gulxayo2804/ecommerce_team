@@ -31,14 +31,13 @@
             </thead>
   
             <tbody>
-              <% for(let item of category) {%>
-                <tr>
-                  <td>
-                    <%= item.name.uz %>
-                  </td>
-                  <td>
-                    <%= item.name.ru %>
-                  </td>
+              
+                <% for(item of data){ %>
+                  <tr>
+
+                  </tr><td><%=item.name.uz%></td>
+                  <td><%=item.name.ru%></td>
+                 
                   <td>
                     <%= moment(item.createdAt).format("DD-MM-YYYY - hh:mm:ss") %>
                   </td>
@@ -49,17 +48,19 @@
                     align-items: center;
                   ">
                     
-                    <a class="btn btn-warning" href="<%=`/api/category/${item._id}`%>">
+                    <a 
+                    class="btn btn-warning" href="<%=`/category/all/${item._id}`%>">
                       <i class="fas fa-cog"></i>
                     </a>
-                    <form method="POST" class="hidden-r" action="<%=`/api/category/${item._id}?_method=DELETE`%>">
+                    <form method="POST" class="hidden-r" action="<%=`/category/delete/${item._id}?_method=DELETE`%>">
                       <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                       </button>
                     </form>
                   </td>
-                </tr>
-                <% } %>
+                  </tr>
+                    <%}%>
+              
             </tbody>
           </table>
         </div>
@@ -78,7 +79,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="/api/category" method="POST" >
+          <form action="/category/add" method="POST" >
             <div class="mb-3">
               <label for="">Name </label>
               <input type="text" name="nameuz" class="form-control"  />
