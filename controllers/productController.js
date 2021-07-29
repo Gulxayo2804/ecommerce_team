@@ -1,25 +1,34 @@
 const fs = require('fs');
 const path = require('path')
 const multer = require('multer')
+const Product = require('../models/Products')
 exports.addProduct = async (req,res) => {
+    let arr = []
+    for (let item in req.files)
+    {
+        arr.push({
+            urls:item
+        })
+    }
     const product = new Product({
         name: 
         {
             uz:req.body.nameuz,
-            ru:req.body.nameru
+            ru:req.body.nameru,
         },
         price: req.body.price,
         CategoryID : req.body.CategoryID,
         color : req.body.color,
         description: {
-            uz: req.body.desciriptionuz,
-            ru: req.body.desciriptionru,
+            uz: req.body.descriptionuz,
+            ru: req.body.descriptionru,
         },
-        images: urls
+        delverTime:req.body.delverTime,
+        images: arr
     }) ;
     await product.save()
     .then(()=>{
-        res.status(201).json({
+        res.status(200).json({
             success: true,
         product : product
         })
@@ -35,8 +44,8 @@ exports.addProduct = async (req,res) => {
 
 exports.getProduct = async (req,res) => {
     const product = await Product.find()
-    const category  = await Category.find()
-    .populate(['categoryID'])
+    // const category  = await Category.find()
+    // .populate(['categoryID'])
      .sort({date:-1})
      .then(()=>{
         res.status(200).json({
@@ -48,7 +57,7 @@ exports.getProduct = async (req,res) => {
 }
 
 exports.getByUserCategoryIDProduct=async (req,res)=>{
-    const product= await Product.find({categoryID: req.params.id})
+    const product= await Product.find({CategoryID: req.params.id})
     .populate(['categoryID'])
      .sort({date:-1})
      .then(()=>{
@@ -61,7 +70,7 @@ exports.getByUserCategoryIDProduct=async (req,res)=>{
 }
 
 exports.getById=async (req,res)=>{
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById({_id: req.params.id})
     .then(()=>{
         res.status(200).json({
             success: true,
@@ -73,7 +82,7 @@ exports.getById=async (req,res)=>{
 
 exports.updateProduct = async(req, res) => {
 
-    const product = await Product.findByIdAndUpdate(req.params.id)
+    const product = await Product.findByIdAndUpdate({_id: req.params.id})
     product.price = req.body.price
     product.name.ru=req.body.nameru
     product.name.uz=req.body.nameuz

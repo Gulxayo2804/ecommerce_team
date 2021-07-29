@@ -83,6 +83,8 @@ app.use(`/category`,require(`./routes/categoryrouter`));
 app.use(`/slider`,require(`./routes/sliderRouter`));
 app.use(`/basket`,require(`./routes/basketRouter`));
 app.use(`/commit`,require(`./routes/commitRouter`))
+app.use(`/product`,require(`./routes/productRouter`))
+
 
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
