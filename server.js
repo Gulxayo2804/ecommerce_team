@@ -44,7 +44,8 @@ app.set('views', './views')
 app.use(layout);
 
 app.get('/', (req,res)=>{
-    res.render('client/index',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/index',{layout:'./client_layout',user})
 })
 app.get('/call', (req,res)=>{
     res.render('client/blurb-call-to-action',{layout:'./client_layout'})

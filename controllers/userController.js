@@ -3,14 +3,14 @@ const { v4: uuidv4 } = require('uuid');
 
 exports.register= async (req,res,next)=>{
     try {
-        const {fullName,email,password,phone,uuid,role} = req.body
-        const uid = uuidv4()
-    const user = new User({fullName,email,password,phone,address,uuid:uid,role})
+        const {name,email,password,phone,uid} = req.body
+        const uuid = uuidv4()
+    const user = new User({name,email,password,phone,uid:uuid})
     await user.save()
-    req.session.admin = user;
+    req.session.user = user;
     req.session.isAuth = true;
     req.session.save();
-        res.status(201).json({ success: "Success", data: user });
+        res.status(201).redirect('/');
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }
@@ -18,28 +18,37 @@ exports.register= async (req,res,next)=>{
 
 exports.login = async (req,res,next)=>{
     const {email, password} = req.body
-    if (!email || !password) {
-      res.redirect("/admin/login");
-    }
-    await User.findOne({email}, (err,user)=>{
-        if(err){
-            return res.status(403).json({msg:err.message})
-        }
-        if(!email){
-        return res.status(404).json({msg:"Bunaqa foydalanuvchi mavjud emas"})
-        }
-        const isMatch = user.matchPassword(password);
-        if (!isMatch) {
-          res.status(404).json({msg:"Password xato"})
-        }else{
-            req.session.admin = user;
-            req.session.isAuth = true;
-            req.session.save()
-            res.status(200).json(user)
-        }
-    })
+    try {
+        if (!email || !password) {
+            res.redirect("/admin/login");
+          }
+          await User.findOne({email}, (err,user)=>{
+              if(err){
+                  return  console.log('chota shu yerda hato borov')/*res.status(403).json({msg:err.message})*/
+              }
+              if(!email){
+              return res.status(404).json({msg:"Bunaqa foydalanuvchi mavjud emas"})
+              }
+              user.matchPassword(password, (err,isMatch)=>{
+                  if(err) throw err;
+                  if (!isMatch) {
+                    res.status(404).json({msg:"Password xato"})
+                  }else{
+                      req.session.user = user;
+                      req.session.isAuth = true;
+                      req.session.save()
+                      res.status(200).redirect('/')
+                  }
+              })
+          })
+    } catch (error) {
+        return res.status(500).json({msg:error.message})
 }
-
+}
+ exports.getAll = async (req,res,next)=>{
+     const all = await User.find()
+     res.send(all)
+ }
 exports.logout = async (req,res,next)=>{
     req.session.destroy();
     res.clearCookie("connectid.sid");
