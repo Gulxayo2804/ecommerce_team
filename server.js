@@ -95,7 +95,7 @@ app.use(`/basket`,require(`./routes/basketRouter`));
 app.use(`/commit`,require(`./routes/commitRouter`))
 app.use(`/product`,require(`./routes/productRouter`))
 app.use(`/Rating`,require(`./routes/rateRouter`))
-
+app.use(`/Chegirma`,require(`./routes/chegirmaRouter`))
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
 })
