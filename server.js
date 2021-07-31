@@ -48,32 +48,41 @@ app.get('/', (req,res)=>{
     res.render('client/index',{layout:'./client_layout',user})
 })
 app.get('/call', (req,res)=>{
-    res.render('client/blurb-call-to-action',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/blurb-call-to-action',{layout:'./client_layout',user})
 })
 app.get('/404', (req,res)=>{
-    res.render('client/404',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/404',{layout:'./client_layout',user})
 })
 app.get('/product', (req,res)=>{
-    res.render('client/compare-products-single',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/compare-products-single',{layout:'./client_layout',user})
 })
 app.get('/conditions', (req,res)=>{
-    res.render('client/conditions',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/conditions',{layout:'./client_layout',user})
 })
 app.get('/coupon', (req,res)=>{
-    res.render('client/coupon',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/coupon',{layout:'./client_layout',user})
 })
 app.get('/detail', (req,res)=>{
-    res.render('client/product-details',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/product-details',{layout:'./client_layout',user})
 })
 app.get('/category', (req,res)=>{
-    res.render('client/category',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/category',{layout:'./client_layout',user})
 })
 
 app.get('/wishlist', (req,res)=>{
-    res.render('client/wishlist',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/wishlist',{layout:'./client_layout',user})
 })
 app.get('/contact', (req,res)=>{
-    res.render('client/contact-us',{layout:'./client_layout'})
+    const user = req.session.user
+    res.render('client/contact-us',{layout:'./client_layout',user})
 })
 
 app.use('/admin', require('./routes/admin/index'))
