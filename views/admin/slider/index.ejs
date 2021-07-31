@@ -112,7 +112,7 @@
       </button>
     </div>
  
-
+<%console.log(data)%>
     <div class="card m-b-30">
       <div class="card-body">
         <table id="datatable" class="table table-bordered text-center"
@@ -126,8 +126,9 @@
           </thead>
 
           <tbody>
-            <% for(let item of result) {%>
+            <% for(item of data) {%>
               <tr>
+
                 <td>
                   <img style="width: 80px" src="/uploads/<%= item.image %>" name="image">
                 </td>
@@ -141,10 +142,10 @@
                   justify-content: space-around;
                   align-items: center;
                 ">
-                  <a class="btn btn-warning" href="<%=`/api/slider/${item._id}`%>">
+                  <a class="btn btn-warning" href="<%=`/slider/all/${item._id}`%>">
                     <i class="fas fa-cog"></i>
                   </a>
-                  <form method="POST" class="hidden-r" action="<%=`/api/slider/${item._id}?_method=DELETE`%>">
+                  <form method="POST" class="hidden-r" action="<%=`/slider/delete/${item._id}?_method=DELETE`%>">
                     <button type="submit" class="btn btn-danger">
                       <i class="fa fa-trash"></i>
                     </button>
@@ -170,7 +171,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/api/slider/add" method="POST" ref="uploadForm" encType="multipart/form-data">
+        <form action="/slider/add" method="POST" ref="uploadForm" encType="multipart/form-data">
          
 
 

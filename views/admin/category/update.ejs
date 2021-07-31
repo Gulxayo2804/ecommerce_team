@@ -5,14 +5,14 @@
 <div class="row">
     <div class="col-md-12 mt-3"
         style="display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
-        <form method="POST" action="<%=`/category/edit/${category._id}?_method=PATCH`%>" class="col-md-8">
+        <form method="POST" action="<%=`/category/edit/${data._id}?_method=PATCH`%>" class="col-md-8">
             <div class="mb-3">
                 <label>Name</label>
-                <input name="nameuz" type="text" class="form-control" value="<%= category.name.uz %>"  />
+                <input name="nameuz" type="text" class="form-control" value="<%= data.name.uz %>"  />
             </div>
             <div class="mb-3">
                 <label>Название</label>
-                <input name="nameru" type="text" class="form-control" value="<%= category.name.ru %>"  />
+                <input name="nameru" type="text" class="form-control" value="<%= data.name.ru %>"  />
             </div>
     
             <button type="submit" class="btn btn-primary col-md-5 mt-3">Saqlash</button>

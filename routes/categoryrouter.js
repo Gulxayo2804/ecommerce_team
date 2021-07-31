@@ -3,11 +3,7 @@ const {createCategory,categoryUpdate,categoryDelete,getAll,getElementById}=requi
 
 
 
-router.get('/add', (req,res)=>{
-    res.render('edit-category',{
-        layout:'./layout'
-    })
-})
+
 router.get('/all/:id', getElementById)
 router.post('/add',createCategory);
 router.get('/all', getAll)

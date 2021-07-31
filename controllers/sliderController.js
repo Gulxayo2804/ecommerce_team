@@ -5,14 +5,21 @@ exports.createSlider=async(req,res,next)=>{
     })
     await slider.save()
     .then(() => {
-        res.redirect(`/admin`)
+        res.redirect(`slider/all`)
     }).catch((err) => {
         res.status(500).redirect(`/slider/add`)
     });
 }
+exports.getAll= async (req,res,next)=>{
+    const slider= await Slider.find()
+    res.render('admin/slider/index',{
+        data:slider,
+        layout:'./admin_layout.ejs'
+    })
+}
 exports.sliderUpdate=async (req,res,next)=>{
     const slider=await Slider.findByIdAndUpdate({_id:req.params.id})
-        Slider.images=req.body.images
+        slider.images=req.body.images
     await slider.save()
         .then(()=>{
             res.status(200).redirect(`/slider/all`)
@@ -27,8 +34,8 @@ exports.sliderDelete=async(req,res,next)=>{
 }
 exports.getElementById= async (req,res,next)=>{
     const slider= await Category.findById({_id:req.params.id})
-    res.status(200).render('edit-slider',{
+    res.status(200).render('admin/slider/update',{
         data:slider,
-        layout:'./layout'
+        layout:'./admin_layout'
     })
 }
