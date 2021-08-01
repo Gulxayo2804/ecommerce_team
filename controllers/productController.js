@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path')
 const multer = require('multer')
 const Product = require('../models/Products')
+const Category = require('../models/Category');
+
 exports.addProduct = async (req,res) => {
     let arr = []
     for (let item in req.files)
@@ -28,43 +30,34 @@ exports.addProduct = async (req,res) => {
     }) ;
     await product.save()
     .then(()=>{
-        res.status(200).json({
-            success: true,
-        product : product
-        })
+            res.redirect('product/all')
         
     })
     .catch((err)=>{
-        res.status(400).json({
-            success:false,
-            data:err
-        })
+        res.status(500).redirect(`/product/add`)
     })
 }
 
-exports.getProduct = async (req,res) => {
+exports.getProduct = async (req,res, next) => {
     const product = await Product.find()
-    // const category  = await Category.find()
-    // .populate(['categoryID'])
-     .sort({date:-1})
-     .then(()=>{
-        res.status(200).json({
-            success: true,
-        product : product
+     const category  = await Category.find()
+    .populate(['CategoryID'])
+        res.render('./admin/product/index', {
+            layout:'./admin_layout',
+            product , category 
+            
         })
         
-    })
 }
 
 exports.getByUserCategoryIDProduct=async (req,res)=>{
     const product= await Product.find({CategoryID: req.params.id})
-    .populate(['categoryID'])
+    .populate(['CategoryID'])
      .sort({date:-1})
      .then(()=>{
-        res.status(200).json({
-            success: true,
-        product : product
-        })
+        res.render("./client/category", {title: "Hamroh", 
+        layout: "./client", 
+        data: product })
         
          })
 }
@@ -72,9 +65,9 @@ exports.getByUserCategoryIDProduct=async (req,res)=>{
 exports.getById=async (req,res)=>{
     const product = await Product.findById({_id: req.params.id})
     .then(()=>{
-        res.status(200).json({
-            success: true,
-        product : product
+        res.render('./admin/product/update', {
+            layout: "./admin_layout", 
+            product
         })
         
          })
@@ -93,10 +86,9 @@ exports.updateProduct = async(req, res) => {
     product.save({validateBeforeSave:false})
     await product.save()
     .then(()=>{
-        res.status(200).json({
-            success: true,
-        product : product
-        })
-        
-         })
+        res.redirect('/product/all')
+    })
+    .catch((err)=>{
+        res.status(400).json({message: "Badly", data: error})
+    })
 }

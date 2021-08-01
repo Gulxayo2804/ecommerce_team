@@ -146,7 +146,7 @@
       <div class="tab-content">
         <div class="tab-pane active p-3" id="home-1" role="tabpanel">
           <form
-            action="/api/product"
+            action="/product"
             method="POST"
             ref="uploadForm"
             encType="multipart/form-data"
@@ -174,7 +174,7 @@
             >
               <label for="">Kerakli kategoriyalarni tanlang</label>
               <select
-                name="categoryID"
+                name="CategoryID"
                 class="form-control"
                 value=""
                 id="filterTheme"
@@ -245,13 +245,12 @@
                       </div>
                     </div>
                     <div class="file-upload-content">
-                      <img class="file-upload-image" src="/uploads/course" />
+                      <img class="file-upload-image" src="/uploads" />
                       <div class="image-title-wrap">
                         <button
                           type="button"
                           onclick="removeUpload()"
-                          class="remove-image"
-                        >
+                          class="remove-image">
                           Remove <span class="image-title">Uploaded Image</span>
                         </button>
                       </div>
