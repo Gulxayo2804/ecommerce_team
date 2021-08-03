@@ -56,12 +56,6 @@
                                     height="16" /><span> French </span></a>
                             <a class="dropdown-item" href="#"><img src="assets/images/flags/spain_flag.jpg" alt=""
                                     height="16" /><span> Spanish </span></a>
-                            <a class="dropdown-item" href="#"><img src="assets/images/flags/russia_flag.jpg" alt=""
-                                    height="16" /><span> Russian </span></a>
-                            <a class="dropdown-item" href="#"><img src="assets/images/flags/germany_flag.jpg" alt=""
-                                    height="16" /><span> German </span></a>
-                            <a class="dropdown-item" href="#"><img src="assets/images/flags/italy_flag.jpg" alt=""
-                                    height="16" /><span> Italian </span></a>
                         </div>
                     </li>
 
@@ -82,9 +76,9 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->
-                                <a class="dropdown-item" href="/"><i class="mdi mdi-account-circle"></i> Profile</a>
+                                <a class="dropdown-item" href="/api/auth/getme/<%= user._id%>"><i class="mdi mdi-account-circle"></i> Profile</a>
                                
-                                <a class="dropdown-item text-danger" href="/"><i class="mdi mdi-power text-danger"></i>
+                                <a class="dropdown-item text-danger" href="/api/auth/logout"><i class="mdi mdi-power text-danger"></i>
                                     Logout</a>
                             </div>
                         </div>

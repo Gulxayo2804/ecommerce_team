@@ -23,7 +23,7 @@ app.use(
         cookie:{
             httpOnly:true,
             maxAge:1000*60*60*24,
-            sameSite:'strict'
+            sameSite:'Strict'
         }
     })
 )
@@ -94,7 +94,6 @@ app.use(`/slider`,require(`./routes/sliderRouter`));
 app.use(`/basket`,require(`./routes/basketRouter`));
 app.use(`/commit`,require(`./routes/commitRouter`))
 app.use(`/product`,require(`./routes/productRouter`))
-
 
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')

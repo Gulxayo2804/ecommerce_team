@@ -8,6 +8,7 @@ const {
     updateProduct
     } = require('../controllers/productController');
 const path = require('path')
+const {isAdminAuth} = require('../middleware/auth')
 
 
 
@@ -23,10 +24,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-router.post('/add',  addProduct);
-router.get('/all', getProduct);
-router.get('/get/:id', getById);
-router.put('/:id',updateProduct)
+router.post('/add', isAdminAuth, addProduct);
+router.get('/all', isAdminAuth,getProduct);
+router.get('/get/:id', isAdminAuth,getById);
+router.put('/:id',isAdminAuth,updateProduct)
 
 
 module.exports = router;
